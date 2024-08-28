@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=TemporizadorMunicionEspecial
+comment1.params=player
+comment1.target=TemporizadorMunicionEspecial(int)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ actualizarImagen()
+comment4.params=
+comment4.target=boolean\ canShootSpecial()
+comment5.params=
+comment5.target=void\ resetCooldown()
+numComments=6

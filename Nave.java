@@ -7,27 +7,42 @@ public class Nave extends Actor
     private long lastSpecialShotTime;  // Tiempo del último disparo especial
     private boolean inmovilizada = false;  // Bandera para saber si la nave está inmovilizada
     private int tiempoInmovilizada = 0;  // Tiempo que la nave lleva inmovilizada
-    private static final int SPECIAL_SHOT_COOLDOWN = 7000;  // Cooldown de 3 segundos para el disparo especial
+    private static final int SPECIAL_SHOT_COOLDOWN = 7000;  // Cooldown de 7 segundos para el disparo especial
+    private TemporizadorMunicionEspecial temporizador;
 
     public Nave(int player) {
         this.player = player;
 
         // Redimensionar la imagen de la nave a un tamaño más pequeño
-        // GreenfootImage image = getImage();
-        // image.scale(image.getWidth() / 3, image.getHeight() / 3);  // Achicar la nave más (25% del tamaño original)
         GreenfootImage image = new GreenfootImage("nave2.png");
         image.scale(60, 60);
         setImage(image);
 
         lastShotTime = System.currentTimeMillis();  // Inicializar el tiempo del último disparo
-
+        
+        // Crear el temporizador, pero no lo añadimos aún al mundo
+        temporizador = new TemporizadorMunicionEspecial(player);
+        
+        // Configurar la rotación de la nave según el jugador
         if (player == 1) {
-            setRotation(90);  // No rotada (jugador 1)
+            setRotation(90);
         } else if (player == 2) {
-            setRotation(270);  // Girada 180 grados (jugador 2)
+            setRotation(270);
         }
     }
     
+    @Override
+    protected void addedToWorld(World world) {
+        super.addedToWorld(world);
+        
+        // Añadir el temporizador al mundo después de que la nave haya sido añadida
+    if (player == 1) {
+        getWorld().addObject(temporizador, getWorld().getWidth() / 2 - 150, 20);
+    } else if (player == 2) {
+        getWorld().addObject(temporizador, getWorld().getWidth() / 2 + 150, 20);
+    }
+    }
+
     public int getPlayer() {
         return player;
     }
@@ -37,7 +52,7 @@ public class Nave extends Actor
         if (!inmovilizada){
             // Mover la nave solo si no está inmovilizada
             movernave();
-        } else{
+        } else {
             // Contar el tiempo de inmovilización
             tiempoInmovilizada++;
             if (tiempoInmovilizada >= 100) {  // Ejemplo: inmovilizada por 100 ciclos
@@ -46,8 +61,8 @@ public class Nave extends Actor
             }
         }
     }
-    // Lógica de movimiento según el jugador
-    private void movernave(){
+
+    private void movernave() {
         if (player == 1) {
             if (Greenfoot.isKeyDown("w")) {
                 setLocation(getX(), getY() - 5);
@@ -61,9 +76,10 @@ public class Nave extends Actor
                 dispararBala();
             }
 
-              // Disparar una munición especial con 'e' y ver si ha pasado el tiempo de espera
+            // Disparar una munición especial con 'e' y ver si ha pasado el tiempo de espera
             if (Greenfoot.isKeyDown("e") && canShootSpecial()) {
                 dispararMunicionEspecial();
+                temporizador.resetCooldown();
             }
         } else if (player == 2) {
             if (Greenfoot.isKeyDown("up")) {
@@ -77,9 +93,10 @@ public class Nave extends Actor
             if (Greenfoot.isKeyDown("enter") && canShoot()) {
                 dispararBala();
             }
-            // Disparar una munición especial con 'shift' y ver si ha pasado el tiempo de espera
+            // Disparar una munición especial con 'p' y ver si ha pasado el tiempo de espera
             if (Greenfoot.isKeyDown("p") && canShootSpecial()) {
                 dispararMunicionEspecial();
+                temporizador.resetCooldown();
             }
         }
     }
@@ -92,10 +109,10 @@ public class Nave extends Actor
         }
         return false;
     }
-    
+
     private boolean canShootSpecial() {
         long currentTime = System.currentTimeMillis();
-        if (currentTime - lastSpecialShotTime >= SPECIAL_SHOT_COOLDOWN) {  // Esperar 3 segundos para disparar la munición especial
+        if (currentTime - lastSpecialShotTime >= SPECIAL_SHOT_COOLDOWN) {  // Esperar 7 segundos para disparar la munición especial
             lastSpecialShotTime = currentTime;  // Actualizar el tiempo del último disparo especial
             return true;
         }
@@ -125,3 +142,4 @@ public class Nave extends Actor
         tiempoInmovilizada = 0;  // Reinicia el contador
     }
 }
+

@@ -8,12 +8,14 @@ public class Contador extends Actor
     private int ronda;
     private int ganadasJugador1;
     private int ganadasJugador2;
+    private MyWorld myWorld;
 
     // Constructor de la clase Contador
-    public Contador() {
+    public Contador(MyWorld myWorld) {
         this.ronda = 0;
         this.ganadasJugador1 = 0;
         this.ganadasJugador2 = 0;
+        this.myWorld = myWorld;
         actualizarImagen();
     }
 
@@ -54,7 +56,7 @@ public class Contador extends Actor
         GreenfootImage image = new GreenfootImage(200, 100);
 
         image.setColor(Color.WHITE);  // Establecer el color del texto en negro
-        image.drawString("Ronda: " + ronda, 10, 25);
+        image.drawString("Ronda: " + ronda + " / " + myWorld.getCantidadRondas(), 10, 25);
         image.drawString("Jugador 1: " + ganadasJugador1, 10, 50);
         image.drawString("Jugador 2: " + ganadasJugador2, 10, 75);
 

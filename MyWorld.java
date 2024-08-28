@@ -23,8 +23,8 @@ public class MyWorld extends World
         this.rondasJugadas = 0;
         
         // Crear y añadir el contador al mundo
-        contador = new Contador();
-        addObject(contador, 300, 50);  // Posicionar el contador en el centro superior del mundo
+        contador = new Contador(this);
+        addObject(contador, 350, 50);  // Posicionar el contador en el centro superior del mundo
 
         // Generar los bloques y naves
         iniciarNuevaRonda();
@@ -114,10 +114,14 @@ public class MyWorld extends World
         }
     }
     
+    public int getCantidadRondas(){
+        return this.cantidadRondas;
+    }
+    
     private void limpiarMundo() {
         // Eliminar todos los actores excepto el contador
         removeObjects(getObjects(Actor.class));
-        addObject(contador, 300, 50);  // Recolocar el contador en el centro superior
+        addObject(contador, 350, 50);  // Recolocar el contador en el centro superior
     }
     
     private void mostrarMensaje(String mensaje) {
