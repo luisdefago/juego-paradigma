@@ -56,9 +56,9 @@ public class Contador extends Actor
         GreenfootImage image = new GreenfootImage(200, 100);
 
         image.setColor(Color.WHITE);  // Establecer el color del texto en negro
-        image.drawString("Ronda: " + ronda + " / " + myWorld.getCantidadRondas(), 10, 25);
-        image.drawString("Jugador 1: " + ganadasJugador1, 10, 50);
-        image.drawString("Jugador 2: " + ganadasJugador2, 10, 75);
+        image.drawString("Ronda: " + (ronda + 1) + " / " + myWorld.getCantidadRondas(), 10, 25);
+        image.drawString(myWorld.getNombre1() + ": " + ganadasJugador1, 10, 50);
+        image.drawString(myWorld.getNombre2() + ": " + ganadasJugador2, 10, 75);
 
         setImage(image);  // Asignar la imagen actualizada al actor
     }

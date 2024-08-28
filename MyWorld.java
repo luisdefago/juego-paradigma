@@ -17,8 +17,19 @@ public class MyWorld extends World
         // Cargar la imagen de fondo
         GreenfootImage fondo = new GreenfootImage("./images/espacio.png");
         setBackground(fondo);  // Establecer la imagen como fondo
-        this.nombre1 = nombre1;
-        this.nombre2 = nombre2;
+        
+        if(nombre1.trim() != ""){
+            this.nombre1 = nombre1.trim();
+        }else{
+            this.nombre1 = "Jugador 1";
+        }
+        
+        if(nombre2.trim() != ""){
+            this.nombre2 = nombre2.trim();
+        }else{
+            this.nombre2 = "Jugador 2";
+        }
+        
         this.cantidadRondas = cantidadRondas;
         this.rondasJugadas = 0;
         
@@ -100,17 +111,9 @@ public class MyWorld extends World
         if (rondasJugadas >= cantidadRondas | contador.getGanadasJugador1() > (cantidadRondas/2) | contador.getGanadasJugador2() > (cantidadRondas/2)) {
             // Mostrar el ganador final cuando se completen todas las rondas
             if (contador.getGanadasJugador1() > contador.getGanadasJugador2()) {
-                if(this.nombre1 != ""){
-                    mostrarMensaje("Ganador: " + this.nombre1);
-                } else {
-                    mostrarMensaje("Ganador: jugador 1");
-                }
+                mostrarMensaje("Ganador: " + this.nombre1);
             } else if (contador.getGanadasJugador2() > contador.getGanadasJugador1()) {
-                if(this.nombre2 != ""){
-                    mostrarMensaje("Ganador: " + this.nombre2);
-                } else {
-                    mostrarMensaje("Ganador: jugador 2");
-                }
+                mostrarMensaje("Ganador: " + this.nombre2);
             } else {
                 mostrarMensaje("Empate");
             }
@@ -124,6 +127,14 @@ public class MyWorld extends World
     
     public int getCantidadRondas(){
         return this.cantidadRondas;
+    }
+    
+    public String getNombre1(){
+        return this.nombre1;
+    }
+    
+    public String getNombre2(){
+        return this.nombre2;
     }
     
     private void limpiarMundo() {
