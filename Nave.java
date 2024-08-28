@@ -12,8 +12,7 @@ public class Nave extends Actor
 
     public Nave(int player) {
         this.player = player;
-
-        // Redimensionar la imagen de la nave a un tamaño más pequeño
+        
         GreenfootImage image = new GreenfootImage("nave2.png");
         image.scale(60, 60);
         setImage(image);
@@ -31,16 +30,15 @@ public class Nave extends Actor
         }
     }
     
-    @Override
     protected void addedToWorld(World world) {
         super.addedToWorld(world);
         
-        // Añadir el temporizador al mundo después de que la nave haya sido añadida
-    if (player == 1) {
-        getWorld().addObject(temporizador, getWorld().getWidth() / 2 - 150, 20);
-    } else if (player == 2) {
-        getWorld().addObject(temporizador, getWorld().getWidth() / 2 + 150, 20);
-    }
+            // Añadir el temporizador al mundo después de que la nave haya sido añadida
+        if (player == 1) {
+            getWorld().addObject(temporizador, getWorld().getWidth() / 2 - 150, 20);
+        } else if (player == 2) {
+            getWorld().addObject(temporizador, getWorld().getWidth() / 2 + 150, 20);
+        }
     }
 
     public int getPlayer() {

@@ -153,9 +153,7 @@ public class MyWorld extends World
         setBackground(fondo);
         
         limpiarMundo();
-        // Detener todos los actores en el mundo
-        for (Actor actor : getObjects(Actor.class)) {
-            actor.setLocation(-1, -1);  // Esto es solo para que no se sigan moviendo, se puede mejorar
-        }
+        removeObjects(getObjects(Actor.class));
+        
     }
 }

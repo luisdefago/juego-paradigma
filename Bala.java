@@ -37,7 +37,7 @@ public class Bala extends Actor
         } else {
             // Si la explosión está visible, incrementar el temporizador
             explosionTimer++;
-            if (explosionTimer >= 4) {  // Mostrar la explosión durante 30 ciclos de act()
+            if (explosionTimer >= 4) {  // Mostrar la explosión durante 4 ciclos de act()
                 getWorld().removeObject(this);  // Eliminar la bala después del tiempo de explosión
             }
         }
