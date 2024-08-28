@@ -52,8 +52,14 @@ public class Nave extends Actor
         if (!inmovilizada){
             // Mover la nave solo si no está inmovilizada
             movernave();
+        GreenfootImage image = new GreenfootImage("nave2.png");
+        image.scale(60, 60);
+        setImage(image);
         } else {
             // Contar el tiempo de inmovilización
+            GreenfootImage image = new GreenfootImage("naveStun.png");
+            image.scale(60, 60);
+            setImage(image);
             tiempoInmovilizada++;
             if (tiempoInmovilizada >= 100) {  // Ejemplo: inmovilizada por 100 ciclos
                 inmovilizada = false;

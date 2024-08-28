@@ -97,7 +97,7 @@ public class MyWorld extends World
     }
     
     private void finalizarRonda() {
-        if (rondasJugadas >= cantidadRondas) {
+        if (rondasJugadas >= cantidadRondas | contador.getGanadasJugador1() > (cantidadRondas/2) | contador.getGanadasJugador2() > (cantidadRondas/2)) {
             // Mostrar el ganador final cuando se completen todas las rondas
             if (contador.getGanadasJugador1() > contador.getGanadasJugador2()) {
                 mostrarMensaje("Ganador: " + this.nombre1);
@@ -133,6 +133,7 @@ public class MyWorld extends World
         fondo.drawImage(texto, (getWidth() - texto.getWidth()) / 2, (getHeight() - texto.getHeight()) / 2);
         setBackground(fondo);
         
+        limpiarMundo();
         // Detener todos los actores en el mundo
         for (Actor actor : getObjects(Actor.class)) {
             actor.setLocation(-1, -1);  // Esto es solo para que no se sigan moviendo, se puede mejorar
