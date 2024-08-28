@@ -100,9 +100,17 @@ public class MyWorld extends World
         if (rondasJugadas >= cantidadRondas | contador.getGanadasJugador1() > (cantidadRondas/2) | contador.getGanadasJugador2() > (cantidadRondas/2)) {
             // Mostrar el ganador final cuando se completen todas las rondas
             if (contador.getGanadasJugador1() > contador.getGanadasJugador2()) {
-                mostrarMensaje("Ganador: " + this.nombre1);
+                if(this.nombre1 != ""){
+                    mostrarMensaje("Ganador: " + this.nombre1);
+                } else {
+                    mostrarMensaje("Ganador: jugador 1");
+                }
             } else if (contador.getGanadasJugador2() > contador.getGanadasJugador1()) {
-                mostrarMensaje("Ganador: " + this.nombre2);
+                if(this.nombre2 != ""){
+                    mostrarMensaje("Ganador: " + this.nombre2);
+                } else {
+                    mostrarMensaje("Ganador: jugador 2");
+                }
             } else {
                 mostrarMensaje("Empate");
             }
