@@ -15,7 +15,7 @@ public class MyWorld extends World
         // Crear un mundo con un tamaño de 600x400 píxeles y un tamaño de celda de 1x1 píxeles.
         super(600, 400, 1);
         // Cargar la imagen de fondo
-        GreenfootImage fondo = new GreenfootImage("espacio.jpg");
+        GreenfootImage fondo = new GreenfootImage("./images/espacio.png");
         setBackground(fondo);  // Establecer la imagen como fondo
         this.nombre1 = nombre1;
         this.nombre2 = nombre2;
@@ -37,11 +37,11 @@ public class MyWorld extends World
 
         // Crear la nave del jugador 1 a la izquierda con un pequeño espacio de los bloques
         Nave nave1 = new Nave(1);
-        addObject(nave1, 100, getHeight() / 2);  // Posicionar la nave en el lado izquierdo
+        addObject(nave1, 90, getHeight() / 2);  // Posicionar la nave en el lado izquierdo
 
         // Crear la nave del jugador 2 a la derecha con un pequeño espacio de los bloques
         Nave nave2 = new Nave(2);
-        addObject(nave2, getWidth() - 100, getHeight() / 2);  // Posicionar la nave en el lado derecho
+        addObject(nave2, getWidth() - 90, getHeight() / 2);  // Posicionar la nave en el lado derecho
     }
 
     private void generateBlocks() {

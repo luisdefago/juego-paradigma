@@ -52,10 +52,8 @@ public class Contador extends Actor
     private void actualizarImagen() {
         // Crear una nueva imagen de tamaño 200x100 para mostrar los datos
         GreenfootImage image = new GreenfootImage(200, 100);
-        image.setColor(Color.WHITE);
-        image.fill();  // Rellenar el fondo con color blanco
 
-        image.setColor(Color.BLACK);  // Establecer el color del texto en negro
+        image.setColor(Color.WHITE);  // Establecer el color del texto en negro
         image.drawString("Ronda: " + ronda, 10, 25);
         image.drawString("Jugador 1: " + ganadasJugador1, 10, 50);
         image.drawString("Jugador 2: " + ganadasJugador2, 10, 75);

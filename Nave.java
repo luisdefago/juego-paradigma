@@ -13,17 +13,18 @@ public class Nave extends Actor
         this.player = player;
 
         // Redimensionar la imagen de la nave a un tamaño más pequeño
-        GreenfootImage image = getImage();
-        image.scale(image.getWidth() / 3, image.getHeight() / 3);  // Achicar la nave más (25% del tamaño original)
-
+        // GreenfootImage image = getImage();
+        // image.scale(image.getWidth() / 3, image.getHeight() / 3);  // Achicar la nave más (25% del tamaño original)
+        GreenfootImage image = new GreenfootImage("nave2.png");
+        image.scale(60, 60);
         setImage(image);
 
         lastShotTime = System.currentTimeMillis();  // Inicializar el tiempo del último disparo
 
         if (player == 1) {
-            setRotation(0);  // No rotada (jugador 1)
+            setRotation(90);  // No rotada (jugador 1)
         } else if (player == 2) {
-            setRotation(180);  // Girada 180 grados (jugador 2)
+            setRotation(270);  // Girada 180 grados (jugador 2)
         }
     }
     
